@@ -1,8 +1,8 @@
+import 'bootstrap/dist/css/bootstrap.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import Head from 'next/head'
+import PageHeader from './components/page-header'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,9 +15,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ar" dir="rtl" >
-      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-      <body className={inter.className}>{children}</body>
+    <html lang="ar" dir="rtl">
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      </Head>
+      <body>
+        <PageHeader></PageHeader>
+        <main className='py-5'>{children}</main>
+      </body>
     </html>
   )
 }
