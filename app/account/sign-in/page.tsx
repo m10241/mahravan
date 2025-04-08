@@ -1,28 +1,64 @@
-import styles from './page.module.css'
-export default function SignIn() {
+'use client'
+import { useState } from 'react';
+
+const LoginForm = () => {
+    const [credentials, setCredentials] = useState({
+        usernameOrEmail: '',
+        password: '',
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setCredentials((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // TODO: Implement your login logic here
+        console.log('Login attempt with:', credentials);
+    };
+
     return (
-        <div className={`${styles.signin} w-100 m-auto`}>
-            <form>
-                <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-                <div className="form-floating">
-                    <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com" />
-                    <label htmlFor="floatingInput">Email address</label>
+        <div className="container mt-5">
+            <div className="row justify-content-center">
+                <div className="col-md-6">
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                            <label htmlFor="usernameOrEmail" className="form-label">
+                                Username or Email
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="usernameOrEmail"
+                                name="usernameOrEmail"
+                                value={credentials.usernameOrEmail}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="password" className="form-label">
+                                Password
+                            </label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                id="password"
+                                name="password"
+                                value={credentials.password}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <button type="submit" className="btn btn-primary w-100">
+                            Sign In
+                        </button>
+                    </form>
                 </div>
-                <div className="form-floating">
-                    <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
-                    <label htmlFor="floatingPassword">Password</label>
-                </div>
-
-                <div className="form-check text-start my-3">
-                    <input className="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" />
-                    <label className="form-check-label" htmlFor="flexCheckDefault">
-                        Remember me
-                    </label>
-                </div>
-                <button className="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-                <p className="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
-            </form>
-
+            </div>
         </div>
-    )
-}
+    );
+};
+
+export default LoginForm;

@@ -5,7 +5,6 @@ export default function RootLayout({
 }) {
     return (
         <>
-            <header>Account</header>
             <div>{children}</div>
         </>
     )

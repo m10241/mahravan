@@ -15,13 +15,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="fa" dir="rtl">
       <Head>
+        <meta charSet="utf-8"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       </Head>
-      <body>
-        <PageHeader></PageHeader>
-        <main className='py-5'>{children}</main>
+      <body className='container-fluid'>
+        <div className='row'>
+          <PageHeader></PageHeader>
+        </div>
+        <main className='row mt-5'>{children}</main>
       </body>
     </html>
   )
