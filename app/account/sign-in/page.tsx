@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import React,{ useState } from 'react';
 
 const LoginForm = () => {
     const [credentials, setCredentials] = useState({
@@ -7,12 +7,12 @@ const LoginForm = () => {
         password: '',
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setCredentials((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         // TODO: Implement your login logic here
         console.log('Login attempt with:', credentials);
